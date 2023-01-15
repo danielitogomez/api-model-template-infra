@@ -51,16 +51,16 @@ function install_compose(){
 
 function git_clone_compose(){
 
-  sudo ls | grep "jenkins-customized-docker"
+  sudo ls | grep "jenkins-model-template"
 
   status_git_clone_compose=$?
 
     if [ $status_git_clone_compose -eq 0 ]; then
       echo "Repository already cloned."
-      sudo git --work-tree=$HOME/jenkins-customized-docker --git-dir=$HOME/jenkins-customized-docker/.git pull
+      sudo git --work-tree=$HOME/jenkins-model-template --git-dir=$HOME/jenkins-model-template/.git pull
     else
       echo "Cloning repository."
-      sudo git clone https://github.com/danielitogomez/jenkins-customized-docker.git && sudo mv -r jenkins-customized-docker $HOME
+      sudo git clone https://github.com/danielitogomez/jenkins-model-template.git && sudo mv -r jenkins-model-template $HOME
     fi
 }
 
@@ -74,7 +74,7 @@ function run_jenkins(){
       echo "Jenkins already up and running."
     else
       echo "Creating Jenkins container."
-      docker-compose -f $HOME/jenkins-customized-docker/docker-compose.yaml up -d
+      docker-compose -f $HOME/jenkins-model-template/docker-compose.yaml up -d
         status_compose=$?
           if [ $status_compose -eq 0 ]; then
            echo "Compose Ok."
@@ -86,6 +86,7 @@ function run_jenkins(){
     fi
 }
 
+# Calling functions
 install_docker
 install_git
 install_compose
