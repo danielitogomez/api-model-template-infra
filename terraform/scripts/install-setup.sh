@@ -60,7 +60,7 @@ function git_clone_compose(){
       sudo git --work-tree=$HOME/jenkins-model-template --git-dir=$HOME/jenkins-model-template/.git pull
     else
       echo "Cloning repository."
-      sudo git clone https://github.com/danielitogomez/jenkins-model-template.git && sudo mv -r jenkins-model-template $HOME
+      sudo git clone https://github.com/danielitogomez/jenkins-model-template.git && sudo cp -r /jenkins-model-template/ $HOME
     fi
 }
 
