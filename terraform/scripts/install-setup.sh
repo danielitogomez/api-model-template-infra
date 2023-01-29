@@ -64,6 +64,8 @@ function git_clone_compose(){
     fi
 }
 
+
+# Image already build and pushed, just need to pull and run - refactor need it.
 function run_jenkins(){
 
  docker ps -a | grep jenkins | grep -i up
